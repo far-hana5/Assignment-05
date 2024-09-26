@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      .active {
+          background-color: rgb(39, 134, 18);
+      }
+  </style>
     
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +19,8 @@
         <div class="navbar ">
             <div class="navbar-start">
                
-                <button class="btn btn-success" onclick="window.location.href='blog.html'">Blog</button>
+                <button id="blog-sec-btn" class="btn btn-success">Blog</button>
+                <button id="home-sec-btn" class="btn btn-success hidden">Home</button>
 
             </div>
             <div class="navbar-center ">
@@ -23,42 +29,82 @@
             </div>
             <div class="navbar-end">
               <img src="./assets/coin.png" alt="">
-              <h3 id="total-amount"> 5000 BDT</h3>
+              <h3 id="total-amount"> 5000</h3>
+              <p> BDT</p>
             </div>
           </div>
     
        </header> 
 
        <div class="flex justify-center gap-8 items-center mt-10">
-        <button class="bg-green-300 btn">Donation</button>
-        <button class="btn">History</button>
+        <button id="show-donation-sec" class="btn " onclick="changeColor('show-donation-sec', 'show-history-sec')" >Donation</button>
+        <button id="show-history-sec" class="btn" onclick="changeColor('show-history-sec', 'show-donation-sec')">History</button>
     </div>
   </div>
 
+<!--Blog section-->
+<div id="blok-section" class="hidden">
+  <h1 class="font-black text-3xl my-3">Importent FAQ!!!</h1>
+  <div class="join join-vertical w-full">
+    <div class="collapse collapse-arrow join-item border-base-300 border">
+   
+      <input type="radio" name="my-accordion-4" checked="checked" />
+      <div class="collapse-title text-xl font-medium">What is the Document object Model (DOM)</div>
+      <div class="collapse-content">
+        <p>The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a web page (HTML or XML) as a tree of objects, allowing programs and scripts (like JavaScript) to dynamically access, modify, and manipulate the content, structure, and styles of the document.
+
+        </p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow join-item border-base-300 border">
+      <input type="radio" name="my-accordion-4" />
+      <div class="collapse-title text-xl font-medium">How do you select element from DOM?</div>
+      <div class="collapse-content">
+        <p>Here’s a brief explanation of how to select elements from the DOM:
+
+          By ID: Select an element using its unique id.
+          By Class Name: Select all elements that have a specific class.
+          By Tag Name: Select all elements with a specific HTML tag (like div or p).
+          By Query Selector: Select the first element that matches a CSS selector.
+          By Query Selector All: Select all elements that match a CSS selector.
+          By Name Attribute: Select elements using their name attribute.</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow join-item border-base-300 border">
+      <input type="radio" name="my-accordion-4" />
+      <div class="collapse-title text-xl font-medium">What is event delegation in the context of dom, and why it is useful?</div>
+      <div class="collapse-content">
+        <p>Event delegation is a technique in the DOM where you attach a single event listener to a parent element to manage events from its child elements. Instead of adding multiple listeners to each child, the event bubbles up to the parent, which handles it.  <br>
+
+          Why it's <br>
+          Improves performance by reducing the number of event listeners. <br>
+          Handles dynamically added elements without needing to attach new event listeners to them.</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow join-item border-base-300 border">
+      <input type="radio" name="my-accordion-4" />
+      <div class="collapse-title text-xl font-medium">How do you manipulate an element an elements of atributes and style using the DOM?</div>
+      <div class="collapse-content">
+        <p>You can manipulate an element’s attributes and style using the DOM in the following <br> Manipulate Attributes:  <br>
+          
+          <br>Use setAttribute() to set or change an attribute.
+          <br>Use getAttribute() to retrieve an attribute's value.
+          <br>Use removeAttribute() to remove an attribute.
+          <br>Manipulate Style:
+          
+          <br>Access the element's style property and modify CSS properties directly.
+          <br>Example: element.style.backgroundColor = 'blue'; changes the background color</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Blog section end-->
+
   <main class="container mx-auto ">
 
-<!--
-<section class="flex gap-6 w-full mx-auto mt-20 h-1/4">
-    <div class="w-1/3">
-        <img src="./assets/noakhali.png" alt="">
-    </div>
-    <div class="w-1/3">
-        <div  class="flex"><img src="./assets/coin.png" alt="">
-            <h3> 0 BDT</h3>
-        </div>
-<h3 class="font-bold text-1xl mb-5 mt-5">Donate for Flood at Noakhali, Bangladesh</h3>
-<p> The recent floods in Noakhali have caused significant damage to homes  infrastructure. Your donation will help provide essential supplies and  to those affected by this disaster. Every contribution, big or small, makes  difference. Please join us in supporting the relief efforts and making a positive impact on the lives of those in need
 
-</p>
-<input
-  type="text"
-  placeholder="Type here"
-  class="input input-bordered input-md w-full max-w-xs" />
-  <button>Donate Now</button>
-    </div>
-</section>
--->
-<section class=" md:flex gap-6 w-full mx-auto mt-20 ">
+<div id="all-section">
+  <section class=" md:flex gap-6 w-full mx-auto mt-20 ">
     <!-- Left Image -->
     <div class="md:w-1/2">
       <img src="./assets/noakhali.png" alt="Flood in Noakhali" class="rounded-lg w-full h-4/5" />
@@ -69,7 +115,8 @@
       <!-- Donation Info -->
       <div class="flex items-center gap-2 mb-4">
         <img src="./assets/coin.png" alt="Coin Icon" class="w-6 h-6" />
-        <h3 class="text-gray-500 font-semibold">0 BDT</h3>
+        <h3 id="section-value-1" class="text-gray-500 font-semibold">0</h3>
+        <p> BDT</p>
       </div>
   
       <!-- Container for uniform width -->
@@ -83,17 +130,40 @@
         </p>
   
         <!-- Donation Input -->
-        <input type="text" placeholder="Write Donation Amount" class="input input-bordered input-md w-full mb-5" />
+        <input id="add-input-1" type="text" placeholder="Write Donation Amount" class="input input-bordered input-md w-full mb-5" />
   
         <!-- Donate Button -->
-        <button class="bg-lime-500 text-white font-bold py-3 px-6 w-full rounded-md hover:bg-lime-600">Donate Now</button>
+<button 
+id="donate-now-btn-1" class="bg-lime-500 text-white font-bold py-3 px-6 w-full rounded-md hover:bg-lime-600">Donate Now
+</button>
+<dialog id="my_modal_1" class="modal justify-center w-1/4 mx-auto">
+  <div class="modal-box">
+    <div class="justify-center items-center">
+      <h3 class="text-lg font-bold">Congrates!</h3>
+      <img src="./assets/coin.png" alt="">
+  
+      <p class="py-4">You have Donated for humankind</p>
+      <h3 class=" text-2xl">Successfully</h3>
+    </div>
+    
+    <div class="modal-action  justify-center">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button id="closeModalBtn" class="btn">Close Confirnmation</button>
+      </form>
+    </div>
+  </div>
+</dialog>
       </div>
     </div>
   </section>
+
+
+
   <section class="md:flex gap-6 w-full mx-auto mt-20">
  <!-- Left Image -->
  <div class="md:w-1/2">
-    <img src="./assets/noakhali.png" alt="Flood in Noakhali" class="rounded-lg w-full h-4/5" />
+    <img src="./assets/feni.png" alt="Flood in Noakhali" class="rounded-lg w-full h-4/5" />
   </div>
 
   <!-- Right Content -->
@@ -101,7 +171,8 @@
     <!-- Donation Info -->
     <div class="flex items-center gap-2 mb-4">
       <img src="./assets/coin.png" alt="Coin Icon" class="w-6 h-6" />
-      <h3 class="text-gray-500 font-semibold">0 BDT</h3>
+      <h3 id="section-value-2" class="text-gray-500 font-semibold">0</h3>
+      <p> BDT</p>
     </div>
 
     <!-- Container for uniform width -->
@@ -115,10 +186,30 @@
       </p>
 
       <!-- Donation Input -->
-      <input type="text" placeholder="Write Donation Amount" class="input input-bordered input-md w-full mb-5" />
+      <input id="add-input-2" type="text" placeholder="Write Donation Amount" class="input input-bordered input-md w-full mb-5" />
 
       <!-- Donate Button -->
-      <button class="bg-lime-500 text-white font-bold py-3 px-6 w-full rounded-md hover:bg-lime-600">Donate Now</button>
+      <button 
+id="donate-now-btn-2" class="bg-lime-500 text-white font-bold py-3 px-6 w-full rounded-md hover:bg-lime-600">Donate Now
+</button>
+<dialog id="my_modal_1" class="modal justify-center w-1/4 mx-auto">
+  <div class="modal-box">
+    <div class="justify-center items-center">
+      <h3 class="text-lg font-bold">Congrates!</h3>
+      <img src="./assets/coin.png" alt="">
+  
+      <p class="py-4">You have Donated for humankind</p>
+      <h3 class=" text-2xl">Successfully</h3>
+    </div>
+    
+    <div class="modal-action  justify-center">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button id="closeModalBtn" class="btn">Close Confirnmation</button>
+      </form>
+    </div>
+  </div>
+</dialog>
     </div>
   </div>
   </section>
@@ -137,7 +228,8 @@
       <!-- Donation Info -->
       <div class="flex items-center gap-2 mb-4">
         <img src="./assets/coin.png" alt="Coin Icon" class="w-6 h-6" />
-        <h3 class="text-gray-500 font-semibold">0 BDT</h3>
+        <h3 id="section-value-3" class="text-gray-500 font-semibold">0</h3>
+        <p> BDT</p>
       </div>
   
       <!-- Container for uniform width -->
@@ -151,13 +243,48 @@
         </p>
   
         <!-- Donation Input -->
-        <input type="text" placeholder="Write Donation Amount" class="input input-bordered input-md w-full mb-5" />
+        <input id="add-input-3" type="text" placeholder="Write Donation Amount" class="input input-bordered input-md w-full mb-5" />
   
         <!-- Donate Button -->
-        <button class="bg-lime-500 text-white font-bold py-3 px-6 w-full rounded-md hover:bg-lime-600">Donate Now</button>
+        <button 
+id="donate-now-btn-3" class="bg-lime-500 text-white font-bold py-3 px-6 w-full rounded-md hover:bg-lime-600">Donate Now
+</button>
+<dialog id="my_modal_1" class="modal justify-center w-1/4 mx-auto">
+  <div class="modal-box">
+    <div class="justify-center items-center">
+      <h3 class="text-lg font-bold">Congrates!</h3>
+      <img src="./assets/coin.png" alt="">
+  
+      <p class="py-4">You have Donated for humankind</p>
+      <h3 class=" text-2xl">Successfully</h3>
+    </div>
+    
+    <div class="modal-action  justify-center">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button id="closeModalBtn" class="btn">Close Confirnmation</button>
+      </form>
+    </div>
+  </div>
+</dialog>
       </div>
     </div>
   </section>
+</div>
+
+<!--History section-->
+<div id="his-sec">
+  
+</div>
+  
+
   </main>
+
+  
+   
+  <script src="js/addEvent.js"></script>
+ 
+  <script src="js/utilities.js"></script>
+  <script src="js/freatures.js"></script>
 </body>
 </html>
