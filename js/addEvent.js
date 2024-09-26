@@ -63,7 +63,7 @@ document.getElementById('donate-now-btn-2').addEventListener('click',function(ev
         */
       let timestamp = new Date().toLocaleString();
      const p=document.createElement('p');
-     p.innerText=`${addMoney2} TK Donate for Flood at Noakhali, Bangladesh:: Local Time :${timestamp}`;
+     p.innerText=`${addMoney2} TK Donate for Flood at Feni, Bangladesh:: Local Time :${timestamp}`;
      document.getElementById('his-sec').appendChild(p);
       //history end
 
@@ -108,7 +108,7 @@ document.getElementById('donate-now-btn-3').addEventListener('click',function(ev
         */
       let timestamp = new Date().toLocaleString();
       const p=document.createElement('p');
-      p.innerText=`${addMoney3} TK Donate for Flood at Noakhali, Bangladesh:: Local Time :${timestamp}`;
+      p.innerText=`${addMoney3} TK Donate Injured in the Quota Movement:: Local Time :${timestamp}`;
       document.getElementById('his-sec').appendChild(p);
        //history end
 
